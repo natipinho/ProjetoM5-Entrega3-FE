@@ -10,7 +10,8 @@ This project focuses on integrating a Frontend with a REST API using the `fetch`
 |---|---|
 | **Name** | Natália Carvalho de Pinho Joaquim |
 | **Student Number** | 219 |
-| **Repository** | [natipinho/Projeto-M5-Entrega-3](https://github.com/natipinho/ProjetoM5-Entrega3-FE) |
+| **Repository** | https://github.com/natipinho/ProjetoM5-Entrega3-FE |
+| **Repository:** | https://github.com/natipinho/M5Projeto |
 
 ---
 
