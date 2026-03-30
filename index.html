@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/ba32721813.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">
+      🗂️ Productivity Manager
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" onclick="showSection('tasks')" id="nav-tasks">📋 Tasks</a></li>
+        <li><a href="#" onclick="showSection('users')" id="nav-users">👥 Users</a></li>
+        <li><a href="#" onclick="showSection('tags')" id="nav-tags">🏷️ Tags</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+
+    <!-- ==================== TASKS ==================== -->
+    <section id="section-tasks" class="taskManager">
+      <h1>📋 Task Manager</h1>
+
+      <!-- Stats -->
+      <div id="task-stats" class="stats-grid"></div>
+
+      <!-- Add Task -->
+      <div class="add-task-div">
+        <input id="task-title-input" type="text" placeholder="Task title...">
+        <input id="task-category-input" type="text" placeholder="Category...">
+        <button id="add-task-btn">➕ Add</button>
+      </div>
+
+      <!-- Search & Sort -->
+      <div class="search-sort-bar">
+        <input id="task-search-input" type="text" placeholder="🔍 Search tasks...">
+        <button id="sort-task-asc-btn" class="btn-sort">Sort A-Z</button>
+        <button id="sort-task-desc-btn" class="btn-sort">Sort Z-A</button>
+      </div>
+
+      <!-- Task List -->
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <!-- ==================== USERS ==================== -->
+    <section id="section-users" class="taskManager" style="display: none;">
+      <h1>👥 User Dashboard</h1>
+
+      <!-- Stats -->
+      <div id="user-stats" class="stats-grid"></div>
+
+      <!-- Add User -->
+      <div class="add-user-form">
+        <input id="user-name-input" type="text" placeholder="Full name">
+        <input id="user-email-input" type="email" placeholder="Email">
+        <button id="add-user-btn" class="btn-add">➕ Add</button>
+      </div>
+
+      <!-- Warning -->
+      <div id="user-warning" class="warning-container"></div>
+
+      <!-- Search & Sort -->
+      <div class="search-sort-bar">
+        <input id="user-search-input" type="text" placeholder="🔍 Search users...">
+        <button id="sort-user-asc-btn" class="btn-sort">Sort A-Z</button>
+        <button id="sort-user-desc-btn" class="btn-sort">Sort Z-A</button>
+      </div>
+
+      <!-- User Grid -->
+      <div id="user-container" class="user-grid"></div>
+    </section>
+
+    <!-- ==================== TAGS ==================== -->
+    <section id="section-tags" class="taskManager" style="display: none;">
+      <h1>🏷️ Tag Manager</h1>
+
+      <!-- Add Tag -->
+      <div class="add-task-div">
+        <input id="tag-name-input" type="text" placeholder="Tag name...">
+        <button id="add-tag-btn">➕ Add</button>
+      </div>
+
+      <!-- Tag List -->
+      <ul id="tag-list" class="task-list"></ul>
+    </section>
+
+  </main>
+
+  <!-- MODAL EDIT TASK -->
+  <div id="modal-edit-task" class="modal-overlay">
+    <div class="modal-content">
+      <span class="modal-close" id="close-edit-task-modal">&times;</span>
+      <h2>✏️ Edit Task</h2>
+      <div class="modal-body">
+        <input type="hidden" id="edit-task-id">
+        <input class="modal-input" id="edit-task-title" type="text" placeholder="Title">
+        <input class="modal-input" id="edit-task-category" type="text" placeholder="Category">
+        <label>
+          <input type="checkbox" id="edit-task-done"> Done
+        </label>
+        <button class="btn-save" id="save-edit-task-btn">💾 Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL EDIT USER -->
+  <div id="modal-edit-user" class="modal-overlay">
+    <div class="modal-content">
+      <span class="modal-close" id="close-edit-user-modal">&times;</span>
+      <h2>✏️ Edit User</h2>
+      <div class="modal-body">
+        <input type="hidden" id="edit-user-id">
+        <input class="modal-input" id="edit-user-name" type="text" placeholder="Full name">
+        <input class="modal-input" id="edit-user-email" type="email" placeholder="Email">
+        <label>
+          <input type="checkbox" id="edit-user-active"> Active
+        </label>
+        <button class="btn-save" id="save-edit-user-btn">💾 Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(type) {
+      const sections = ['tasks', 'users', 'tags'];
+      sections.forEach(s => {
+        document.getElementById(`section-${s}`).style.display = 'none';
+        const navLink = document.getElementById(`nav-${s}`);
+        if (navLink) navLink.classList.remove('active');
+      });
+
+      document.getElementById(`section-${type}`).style.display = 'block';
+      const activeLink = document.getElementById(`nav-${type}`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+
+    showSection('tasks');
+  </script>
+
+  <script type="module" src="./dist/main.js"></script>
+</body>
+</html>
